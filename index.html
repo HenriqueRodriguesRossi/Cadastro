@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="icon" href="login.png" type="image/png">
+	<title>TechNews</title>
+</head>
+<body>
+	<div class="content">
+		<h1>Cadastro 😃</h1>
+		<form id="form">
+			<div>
+				<input type="text" placeholder=" Digite o seu nome" class="inputs required" oninput="nameValidate()">
+				<span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+			</div>
+			<div>
+				<input type="text" placeholder=" Nome de usuário" class="inputs required" oninput="usuarioValidate()">
+				<span class="span-required">Usuário deve ter no mínimo 5 caracteres</span>
+			</div>
+			<div>
+				<input type="email" placeholder=" Digite o seu email" class="inputs required" oninput="emailValidate()">
+				<span class="span-required">Digite um E-mail válido</span>
+			</div>
+			<div>
+				<input type="password" placeholder=" Digite sua senha" class="inputs required" oninput="mainPasswordValidate()">
+				<span class="span-required">Senha deve ter no mínimo 8 caracteres</span>
+			</div>
+			<div>
+				<input type="password" placeholder=" Repita sua senha" class="inputs required" oninput="comparePassword()">
+				<span class="span-required">Senhas devem ser compatíveis</span>
+			</div>
+			<p>Sexo:</p>
+			<div class="box-select">
+				<div>
+					<input type="radio" id="M" value="M" name="sexo">
+					<label for="M">Masculino</label>
+				</div>
+				<div>
+					<input type="radio" id="F" value="F" name="sexo">
+					<label for="F">Feminino</label>
+				</div>
+				<div>
+					<input type="radio" id="O" value="O" name="sexo">
+					<label for="O">Outro</label>
+				</div>
+			</div>
+			<p>Quais são as suas experiências?</p>
+			<div class="box-select">
+				<div>
+					<input type="checkbox" id="HTML" value="HTML" name="conhecimentos">
+					<label for="HTML">HTML</label>
+				</div>
+				<div>
+					<input type="checkbox" id="CSS" value="CSS" name="conhecimentos">
+					<label for="CSS">CSS</label>
+				</div>
+				<div>
+					<input type="checkbox" id="JavaScript" value="JavaScript" name="conhecimentos">
+					<label for="JavaScript">JavaScript</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Outras" value="Outras" name="conhecimentos">
+					<label for="Outras">Outras</label>
+				</div>
+			</div>
+			<p>Quais são suas áreas de interesse?</p>
+			<div class="box-select">
+				<div>
+					<input type="checkbox" id="FrontEnd" value="FrontEnd" name="interesse">
+					<label for="FrontEnd">Front End</label>
+				</div>
+				<div>
+					<input type="checkbox" id="BackEnd" value="BackEnd" name="interesse">
+					<label for="BackEnd">Back End</label>
+				</div>
+				<div>
+					<input type="checkbox" id="FullStack" value="FullStack" name="interesse">
+					<label for="FullStack">Full Stack</label>
+				</div>
+				<div>
+					<input type="checkbox" id="Mobile" value="Mobile" name="interesse">
+					<label for="Mobile">Mobile</label>
+				</div>
+			</div>
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
+</body>
+<script>
+	const form = document.getElementById('form')
+	const campos = document.querySelectorAll('.required')
+	const spans = document.querySelectorAll('.span-required')
+
+	form.addEventListener('submit', (event) => {
+		event.preventDefault()
+		nameValidate()
+		usuarioValidate()
+		emailValidate()
+		mainPasswordValidate()
+		comparePassword()
+	})
+
+	function setError(index){
+		campos[index].style.border = '2px solid #e43434'
+		spans[index].style.display = 'block'
+	}
+
+	function removeError(index){
+		campos[index].style.border = '2px solid ghostwhite'
+		spans[index].style.display = 'none'
+	}
+
+	function nameValidate(){
+		if(campos[0].value.length < 3){
+			setError(0)
+		}else{
+			removeError(0)
+		}
+	}
+
+	function usuarioValidate(){
+		if (campos[1].value.length < 5){
+			setError(1)
+		}else{
+			removeError(1)
+		}
+	}
+
+	function emailValidate() {
+  		let emailPattern =
+    	/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/
+  		if(emailPattern.test(campos[2].value)){
+  			removeError(2)
+  		}else{
+  			setError(2)
+  		}
+	}
+
+	function mainPasswordValidate(){
+		if(campos[3].value.length < 8){
+			setError(3)
+		}else{
+			removeError(3)
+			comparePassword()
+		}
+	}
+
+	function comparePassword(){
+		if (campos[3].value == campos[4].value && campos[4].value.length >= 8) {
+			removeError(4)
+		}else{
+			setError(4)
+		}
+	}
+</script>
+</html>

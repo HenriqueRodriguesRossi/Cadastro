@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,300;0,400;0,500;1,700&family=Martian+Mono:wght@100;200;300;500&display=swap');
+
+:root{
+	--color-white: ghostwhite;
+	--color-red: #e63636;
+	--color-dark1: #181818;
+	--color-dark2: #1e1e1e;
+	--color-purple1: #9333FF;
+	--color-purple2: indigo;
+	--color-purple3: darkviolet;
+	--color-blue1: DarkBlue;
+	--color-blue2: mediumBlue;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-family: Anybody, Arial;
+	background: var(--color-dark1);
+	color: var(--color-white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.content{
+	background: linear-gradient( var(--color-purple1), var(--color-purple2)); 
+	padding: 2rem;
+	border: 2px solid var(--color-white);
+	border-radius: 20px;
+	min-width: 30%;
+	overflow: auto;
+}
+
+h1{
+	margin-bottom: 1rem;
+	text-align: center;
+	font-weight: 700;
+}
+
+.content form{
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.span-required{
+	font-size: 20px;
+	font-family:  Anybody, Arial;
+	font-weight: 400;
+	margin: 3px 0 0 3px;
+	color: #e43434;
+	display: none;
+}
+
+.inputs{
+	padding: 8px 5px;
+	outline: none;
+	border-radius: 5px;
+	background-color: var(--color-dark1);
+	color: var(--color-white);
+	font-family:  Anybody, Arial;
+	font-weight: 500;
+	width: 100%;
+	box-sizing: border-box;
+	transition: .3s;
+}
+
+textarea{
+	resize: none;
+}
+
+.inputs:focus{
+	border: 2px solid var(--color-white);
+}
+
+.box-select{
+	display: flex;
+	justify-content: space-evenly;
+	font-weight: bold;
+	gap: 1rem;
+}
+
+button[type="submit"]{
+	width: 200px;
+	height: 35px;
+	font-size: 20px;
+	outline: none;
+	border: 2px solid ghostwhite;
+	border-radius: 30px;
+	margin-top: 1rem;
+	margin-left: 6rem;
+	background-color: var(--color-blue2);
+	color: ghostwhite;
+}
+
+button[type="submit"]:hover{
+	background-color: var(--color-blue1);
+	cursor: pointer;
+}
+
+@media (max-width: 576px){
+
+	button[type="submit"]{
+		margin-right: 6rem;
+	}
+
+	.box-select{
+		flex-direction: column;
+		gap:5px;
+	}
+}
